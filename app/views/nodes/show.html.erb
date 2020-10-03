@@ -1,0 +1,21 @@
+<%= render partial: "breadcrump", locals: {node: @node} %>  
+<%= form_with model: @node, local: true, id: "node_form" do |f| %>
+  <div class="form-group">
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <%= f.hidden_field :content %>
+  <div id="editor" style="height: 600px"><%= @node.content %></div>
+  <button type="button" class="btn btn-outline-primary" onclick="submit_form();">
+    更新
+  </button>
+<% end %>
+<script>
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/monokai");
+  function submit_form(){
+    var content = editor.getValue();
+    $("#node_content").val(content);
+    $("#node_form").submit();
+  }
+
+</script>

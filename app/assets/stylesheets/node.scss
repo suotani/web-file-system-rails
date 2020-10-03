@@ -1,0 +1,31 @@
+.main{
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+.child_nodes{
+  background-color:black;
+  list-style: none;
+  width: 50%;
+  min-height: 700px;
+  margin: 0;
+  li{
+    color: white;
+  }
+  li.directory{
+    a{
+      color: blue;
+    }
+  }
+  li.file{
+    a{
+      color: green;
+    }
+  }
+}
+
+.form{
+  width: 50%;
+  background-color: rgb(228, 228, 228);
+  padding: 20px;
+}

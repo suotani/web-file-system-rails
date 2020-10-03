@@ -1,0 +1,10 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <% node.parent_list.each do |pnode| %>
+      <li class="breadcrumb-item">
+        <%= link_to pnode.name, nodes_path(id: pnode.id) %>
+      </li>
+    <% end %>
+    <li class="breadcrumb-item active" aria-current="page"><%= node.name %></li>
+  </ol>
+</nav>

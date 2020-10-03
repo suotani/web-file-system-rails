@@ -1,0 +1,34 @@
+<%= render partial: "breadcrump", locals: {node: @node} %>
+<div class="main">
+  <ul class="child_nodes">
+  <% @node.nodes.each do |cnode| %>
+    <% if cnode.file? %>
+      <li class="file">
+        [F]|
+        <%= cnode.created_at %>|
+        <%= cnode.updated_at %>|
+        <%= link_to cnode.name, node_path(id: cnode) %>
+      </li>
+    <% else %>
+      <li class="directory">
+        [D]|
+        <%= cnode.created_at %>|
+        <%= cnode.updated_at %>|
+        <%= link_to cnode.name, nodes_path(id: cnode) %>
+      </li>
+    <% end %>
+  <% end %>
+  </ul>
+  <div class="form">
+    <%= form_with model: Node.new, local: true, class: "container" do |f| %>
+      <%= f.hidden_field :parent_id, value: @node.id %>
+      <div class="form-group">
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.button "ファイルを作成", value: "file", class: "btn btn-success" %>
+        <%= f.button "フォルダを作成", value: "directory", class: "btn btn-info" %>
+      </div>
+    <% end %>
+  </div>
+</div>
